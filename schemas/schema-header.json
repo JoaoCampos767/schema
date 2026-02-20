@@ -1,0 +1,15 @@
+{
+  "component": "HeaderModern",
+  "props": {
+    "logoUrl": "https://via.placeholder.com/150x50",
+    "storeName": "Minha Loja",
+    "menuItems": [
+      { "label": "Início", "href": "/" },
+      { "label": "Produtos", "href": "/produtos" },
+      { "label": "Sobre", "href": "/sobre" },
+      { "label": "Contato", "href": "/contato" }
+    ],
+    "backgroundColor": "#1a1a1a",
+    "textColor": "#ffffff"
+  }
+}
