@@ -2,21 +2,16 @@ import {
   DynamicComponent,
   SectionConfig,
 } from "@/components/DynamicLayoutRenderer";
+import { getBody, getFooter, getHeader } from "@/lib/schema";
 import { Suspense } from "react";
 
-export const dynamic = "force-dynamic";
-
 async function AsyncHeader() {
-  const header = await fetch("http://localhost:3000/api/header", {
-    cache: "no-store",
-  }).then((r) => r.json());
+  const header = await getHeader();
   return <DynamicComponent component={header.component} props={header.props} />;
 }
 
 async function AsyncBody() {
-  const body = await fetch("http://localhost:3000/api/body", {
-    cache: "no-store",
-  }).then((r) => r.json());
+  const body = await getBody();
   return (
     <main className="flex-1">
       {body.sections.map((section: SectionConfig) => (
@@ -31,9 +26,7 @@ async function AsyncBody() {
 }
 
 async function AsyncFooter() {
-  const footer = await fetch("http://localhost:3000/api/footer", {
-    cache: "no-store",
-  }).then((r) => r.json());
+  const footer = await getFooter();
   return <DynamicComponent component={footer.component} props={footer.props} />;
 }
 

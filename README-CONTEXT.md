@@ -391,3 +391,45 @@ Retorna a configuração do footer em JSON
 ### GET /api/schema-unico
 
 Retorna o schema completo da página
+
+## ⚡ Cache e Performance
+
+O projeto utiliza as estratégias de cache do Next.js para otimizar o desempenho, tanto na renderização de componentes quanto no carregamento de dados.
+
+### Cache de Dados com `"use cache"`
+
+Para evitar buscas repetidas de dados em APIs, o projeto utiliza a diretiva `"use cache"` em funções que buscam dados. Isso instrui o Next.js a armazenar em cache o resultado dessas funções.
+
+**Exemplo em `lib/schema.ts`:**
+
+```typescript
+import { cacheTag, cacheLife } from "next/cache";
+
+export async function getHeader() {
+  "use cache";
+  cacheTag("schema");
+  cacheLife("hours");
+
+  const res = await fetch(`${BASE_URL}/api/header`);
+  return res.json();
+}
+```
+
+**Como Funciona:**
+
+- **`"use cache"`:** Sinaliza que o retorno da função deve ser cacheado.
+- **`cacheTag("schema")`:** Associa o cache a uma tag específica ("schema"). Isso permite invalidar todos os caches com essa tag de uma só vez.
+- **`cacheLife("hours")`:** Define o tempo de vida do cache (neste caso, horas).
+
+Essa abordagem garante que as funções `getHeader`, `getBody` e `getFooter` não sejam executadas a cada requisição, servindo os dados diretamente do cache e melhorando a performance.
+
+### Cache de Renderização (Full Route Cache)
+
+O Next.js automaticamente armazena em cache o resultado da renderização de rotas estáticas no lado do servidor. Isso significa que, após a primeira visita, a página é servida diretamente do cache, resultando em um carregamento quase instantâneo.
+
+- **Como funciona:** O HTML final de uma página é armazenado e reutilizado em requisições subsequentes.
+- **Invalidação:** O cache é invalidado automaticamente quando:
+  - Ocorre um novo deploy.
+  - Os dados utilizados na página são revalidados (por exemplo, através de `revalidatePath` ou quando o `cacheLife` expira).
+
+Essa combinação de caches garante que o site seja rápido e eficiente, minimizando o tempo de carregamento e o uso de recursos do servidor.
