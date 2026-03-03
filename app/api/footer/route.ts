@@ -1,7 +1,7 @@
-import footer from "@/schemas/schema-footer.json";
+import body from "@/schemas/footer.json";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  return NextResponse.json(footer);
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+  return NextResponse.json(body);
 }

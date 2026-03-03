@@ -1,4 +1,4 @@
-import body from "@/schemas/schema-body.json";
+import body from "@/schemas/body.json";
 import { NextResponse } from "next/server";
 
 export async function GET() {

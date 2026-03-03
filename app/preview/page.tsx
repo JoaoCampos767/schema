@@ -1,11 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
 import DynamicLayoutRenderer from "@/components/DynamicLayoutRenderer";
+import { LayoutSchema } from "@/types/schema";
 
 const EDITOR_ORIGIN = process.env.NEXT_PUBLIC_EDITOR_ORIGIN!;
 
 export default function PreviewClient() {
-  const [schema, setSchema] = useState<any>(null);
+  const [schema, setSchema] = useState<LayoutSchema>();
 
   useEffect(() => {
     console.log("PreviewClient montou, EDITOR_ORIGIN:", EDITOR_ORIGIN);

@@ -1,0 +1,26 @@
+{
+  "component": "FooterSimple",
+  "props": {
+    "copyright": "© 2024 Minha Loja. Todos os direitos reservados.",
+    "links": [
+      {
+        "label": "Termos",
+        "href": "/termos"
+      },
+      {
+        "label": "Privacidade",
+        "href": "/privacidade"
+      }
+    ],
+    "socialMedia": [
+      {
+        "platform": "Instagram",
+        "url": "https://instagram.com"
+      },
+      {
+        "platform": "Facebook",
+        "url": "https://facebook.com"
+      }
+    ]
+  }
+}

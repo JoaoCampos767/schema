@@ -1,4 +1,4 @@
-import header from "@/schemas/schema-header.json";
+import header from "@/schemas/header.json";
 import { NextResponse } from "next/server";
 
 export async function GET() {

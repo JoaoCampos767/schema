@@ -1,8 +1,6 @@
-import {
-  DynamicComponent,
-  SectionConfig,
-} from "@/components/DynamicLayoutRenderer";
+import { DynamicComponent } from "@/components/DynamicLayoutRenderer";
 import { getBody, getFooter, getHeader } from "@/lib/schema";
+import { SectionConfig } from "@/types/schema";
 import { Suspense } from "react";
 
 async function AsyncHeader() {
